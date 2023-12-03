@@ -1,5 +1,6 @@
 package fr.nbrouand.aoc2023.day1;
 
+import fr.nbrouand.aoc2023.AocTools;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Arrays;
@@ -48,7 +49,7 @@ public class Calibration {
 
     private List<Integer> getIntegers(String input) {
         return Arrays.stream(input.split(""))
-                .filter(this::isInteger)
+                .filter(AocTools::isInteger)
                 .map(Integer::parseInt)
                 .toList();
     }
@@ -76,15 +77,5 @@ public class Calibration {
         return input;
     }
 
-    private boolean isInteger(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            Integer.parseInt(strNum);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
-    }
+
 }

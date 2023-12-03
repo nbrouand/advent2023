@@ -39,3 +39,10 @@ classes/
 /out
 /out-tsc/
 **/ui/out-tsc/
+
+######################
+# Maven
+######################
+/log/
+**/target/
+.mvn/
