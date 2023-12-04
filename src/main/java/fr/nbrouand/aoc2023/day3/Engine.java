@@ -10,11 +10,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
 public class Engine {
-    Pattern patternNumber = Pattern.compile("\\d+");
-    Pattern patterSymbol = Pattern.compile("\\D");
+
     List<EngineNumber> numbers = new ArrayList<>();
     List<EngineSymbol> symbols = new ArrayList<>();
-
 
     public Engine(String input) {
         AtomicInteger lineIndex = new AtomicInteger();
@@ -43,36 +41,6 @@ public class Engine {
             lineIndex.getAndIncrement();
         });
     }
-
-   /* public Engine(String input) {
-        AtomicInteger lineIndex = new AtomicInteger();
-        input.lines().forEach(s -> {
-            Matcher matcher = patternNumber.matcher(s);
-            while (matcher.find()) {
-                String group = matcher.group();
-                int number = Integer.parseInt(group);
-                int start = s.indexOf(group);
-                List<Point> points = new ArrayList<>();
-                for (int i = 0; i < group.length(); i++) {
-                    points.add(new Point(start + i, lineIndex.get()));
-                }
-                numbers.add(new EngineNumber(number, points));
-            }
-            Matcher matcher2 = patterSymbol.matcher(s);
-            while (matcher2.find()) {
-                String group = matcher2.group();
-                if (!group.equals(".")) {
-                    int start = s.indexOf(group);
-                    List<Point> points = new ArrayList<>();
-                    for (int i = 0; i < group.length(); i++) {
-                        points.add(new Point(start + i, lineIndex.get()));
-                    }
-                    symbols.add(new EngineSymbol(group, points));
-                }
-            }
-            lineIndex.getAndIncrement();
-        });
-    }*/
 
     public List<Integer> computeAdditiveAllSymbol() {
         List<Integer> result = new ArrayList<>();
@@ -135,7 +103,6 @@ public class Engine {
 
         return xDiff <= 1 && yDiff <= 1;
     }
-
 
     public List<EngineNumber> getNumbers() {
         return numbers;
